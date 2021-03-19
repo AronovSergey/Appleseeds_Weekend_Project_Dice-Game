@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class FinalScore extends Component {
-    render() {
-        return (
-            <div>
-                FinalScore
-            </div>
-        );
+const FinalScore = ({ value, action }) => {
+    const [localValue, setLocalValue] = useState(value);
+
+    function onInputChange(event) {
+        setLocalValue(event.target.value);
+        action(event.target.value);
     }
+
+    return (
+        <input 
+            type="number" 
+            name="finalScore" 
+            value={localValue} 
+            onChange={(event) => onInputChange(event)}
+        />
+    )
 }
 
 export default FinalScore;

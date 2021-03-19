@@ -1,3 +1,7 @@
-.player{
+.player {
     width: 50%;
+}
+
+.my-turn {
+    background: #eee;
 }

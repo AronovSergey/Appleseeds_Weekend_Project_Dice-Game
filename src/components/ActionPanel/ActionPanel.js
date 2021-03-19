@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSync, faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
 
 import Dices from './Dices/Dices';
 import ActionButton from './ActionButton/ActionButton';
@@ -13,17 +13,34 @@ class ActionPanel extends Component {
         return (
             <div className="container">
                 <ActionButton
-                    value="coffe"
+                    value="NEW GAME"
+                    action={this.props.onNewGame}
                 >
-                    <FontAwesomeIcon icon={faCoffee} />
+                    <FontAwesomeIcon icon={faPlus} />
                 </ActionButton>
 
                 <Dices 
                     dices={this.props.dices}
                 />
-                <ActionButton />
-                <ActionButton />
-                <FinalScore />
+
+                <ActionButton
+                    value="ROLL DICE"
+                    action={this.props.onRoll}
+                >
+                    <FontAwesomeIcon icon={faSync} />
+                </ActionButton>
+
+                <ActionButton
+                    value="HOLD"
+                    action={this.props.onHold}
+                >
+                    <FontAwesomeIcon icon={faAngleDoubleDown} />
+                </ActionButton>
+
+                <FinalScore 
+                    value={this.props.finalScore}
+                    action={this.props.onFinalScoreChange}
+                />
             </div>
         );
     }
