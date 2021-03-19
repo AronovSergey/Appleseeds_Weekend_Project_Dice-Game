@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CurrentScore from './CurrentScore/CurrentScore';
 import TotalScore from './TotalScore/TotalScore';
 
-class Player extends Component {
-    render() {
-        return (
-            <div>
-                <TotalScore />
-                <CurrentScore />
-            </div>
-        )
-    }
+import './Player.css'
+
+const Player = ({ score, dices }) => {
+    return (
+        <div className="player">
+            <TotalScore 
+                score={score}
+            />
+            <CurrentScore 
+                dices={dices}
+            />
+        </div>
+    )
 }
+
 export default Player;

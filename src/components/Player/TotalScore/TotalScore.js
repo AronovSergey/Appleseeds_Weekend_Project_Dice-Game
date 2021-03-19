@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class TotalScore extends Component {
-    render() {
-        return (
-            <div>
-                TotalScore
-            </div>
-        );
-    }
+const TotalScore = ({ score }) => {
+    return (
+        <div>
+            TotalScore: {score}
+        </div>
+    )
 }
 
-export default TotalScore;
+export default TotalScore

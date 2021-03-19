@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class CurrentScore extends Component {
-    render() {
-        return (
-            <div>
-                CurrentScore
-            </div>
-        );
-    }
+const CurrentScore = ({ dices }) => {
+    return (
+        <div>
+            CurrentScore: {dices[0] + dices[1]}
+        </div>
+    )
 }
 
-export default CurrentScore;
+export default CurrentScore
