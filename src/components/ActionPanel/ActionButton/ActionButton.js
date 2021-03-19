@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ActionButton extends Component {
-    render() {
-        return (
-            <div>
-                ActionButton
-            </div>
-        );
-    }
+const ActionButton = ({ children, value }) => {
+    return (
+        <button>
+            {children}
+            {value}
+        </button>
+    )
 }
 
 export default ActionButton;
