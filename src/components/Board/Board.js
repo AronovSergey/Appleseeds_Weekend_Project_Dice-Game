@@ -8,6 +8,8 @@ const initialState = {
     dices: [1, 1],
     firstPlayerScore: 0,
     secondPlayerScore: 0,
+    firstPlayerCurrent: 0,
+    secondPlayerCurrent: 0,
     isItFirstPlayerTurn: true,
     hasRolled: false,
     finalScore: 100,
@@ -17,11 +19,16 @@ class Board extends Component {
     state = { ...initialState }
 
     onRollDice() {
-        const newDices = [getRndInteger(1, 7), getRndInteger(1, 7)]
+        const newDices = [getRndInteger(1, 7), getRndInteger(1, 7)];
+        const { isItFirstPlayerTurn, firstPlayerCurrent, secondPlayerCurrent } = this.state;
 
         this.setState({
             dices: newDices,
             hasRolled: true,
+            firstPlayerCurrent: (isItFirstPlayerTurn ?
+                                    firstPlayerCurrent + newDices[0] + newDices[1] : firstPlayerCurrent),
+            secondPlayerCurrent: (!isItFirstPlayerTurn ?
+                                    secondPlayerCurrent + newDices[0] + newDices[1] : secondPlayerCurrent),
         })
 
         if(newDices[0] === 6 && newDices[1] === 6) { 
@@ -35,14 +42,14 @@ class Board extends Component {
     }
 
     onHold() {
-        const { dices, firstPlayerScore, secondPlayerScore, isItFirstPlayerTurn } = this.state;
+        const { firstPlayerScore, secondPlayerScore, isItFirstPlayerTurn, firstPlayerCurrent, secondPlayerCurrent } = this.state;
         this.setState({
             isItFirstPlayerTurn: !isItFirstPlayerTurn,
-            firstPlayerScore: (isItFirstPlayerTurn ?
-                                firstPlayerScore + dices[0] + dices[1] : firstPlayerScore),
-            secondPlayerScore: (!isItFirstPlayerTurn ?
-                                secondPlayerScore + dices[0] + dices[1] : secondPlayerScore),
+            firstPlayerScore: firstPlayerScore + firstPlayerCurrent,
+            secondPlayerScore: secondPlayerScore + secondPlayerCurrent,
             dices: [1, 1],
+            firstPlayerCurrent: 0,
+            secondPlayerCurrent: 0,
             hasRolled: false,
         })
     }
@@ -64,6 +71,8 @@ class Board extends Component {
             secondPlayerScore: (!isItFirstPlayerTurn ?
                                     0 : secondPlayerScore),
             dices: [1, 1],
+            firstPlayerCurrent: 0,
+            secondPlayerCurrent: 0,
             hasRolled: false,
         })
     }
@@ -75,7 +84,7 @@ class Board extends Component {
             <div className="board">
                 <Player 
                     score={firstPlayerScore}
-                    dices={this.state.dices}
+                    current={this.state.firstPlayerCurrent}
                     myTurn={this.state.isItFirstPlayerTurn}
                     hasRolled={this.state.hasRolled}
                     hasWon={gameIsEnded ? 
@@ -100,7 +109,7 @@ class Board extends Component {
 
                 <Player 
                     score={secondPlayerScore}
-                    dices={this.state.dices}
+                    current={this.state.secondPlayerCurrent}
                     myTurn={!this.state.isItFirstPlayerTurn}
                     hasRolled={this.state.hasRolled}
                     hasWon={gameIsEnded ? 

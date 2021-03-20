@@ -1,11 +1,11 @@
 import React from 'react'
 
-const CurrentScore = ({ dices, myTurn, hasRolled }) => {
+const CurrentScore = ({ current, myTurn, hasRolled }) => {
     return (
         <div className="current">
             Current:
             <br />
-            {myTurn && hasRolled ? dices[0] + dices[1] : 0}
+            {myTurn && hasRolled ? current : 0}
         </div>
     )
 }

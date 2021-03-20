@@ -4,7 +4,7 @@ import TotalScore from './TotalScore/TotalScore';
 
 import './Player.css'
 
-const Player = ({ score, dices, myTurn, hasRolled, hasWon, player }) => {
+const Player = ({ score, current, myTurn, hasRolled, hasWon, player }) => {
     if(hasWon === 'in-game'){
         return (
             <div className={`player ${myTurn ? 'my-turn' : ''}`}>
@@ -19,7 +19,7 @@ const Player = ({ score, dices, myTurn, hasRolled, hasWon, player }) => {
                     />
                 </div>
                 <CurrentScore 
-                    dices={dices}
+                    current={current}
                     myTurn={myTurn}
                     hasRolled={hasRolled}
                 />
@@ -31,7 +31,7 @@ const Player = ({ score, dices, myTurn, hasRolled, hasWon, player }) => {
             <div 
                 className="player win-loss"
             >
-                {'LOSS :('}
+                {'WIN :)'}
             </div>
         )
     }
@@ -40,7 +40,7 @@ const Player = ({ score, dices, myTurn, hasRolled, hasWon, player }) => {
             <div 
                 className="player win-loss"
             >
-                {'WIN :)'}
+                {'LOSS :('}
             </div>
         )
     }
