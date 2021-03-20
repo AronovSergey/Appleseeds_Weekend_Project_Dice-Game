@@ -24,11 +24,10 @@ class Board extends Component {
             hasRolled: true,
         })
 
-        if(newDices[0] === newDices[1]) { 
-            const onSameValue = this.onSameValue.bind(this)
-            setTimeout(onSameValue, 600) 
+        if(newDices[0] === 6 && newDices[1] === 6) { 
+            const onSameValue = this.onSameValue.bind(this);
+            setTimeout(onSameValue, 800);
         }
-        
         
         function getRndInteger(min, max) {
             return Math.floor(Math.random() * (max - min) ) + min;
@@ -40,9 +39,9 @@ class Board extends Component {
         this.setState({
             isItFirstPlayerTurn: !isItFirstPlayerTurn,
             firstPlayerScore: (isItFirstPlayerTurn ?
-                                 firstPlayerScore + dices[0] + dices[1] : firstPlayerScore),
+                                firstPlayerScore + dices[0] + dices[1] : firstPlayerScore),
             secondPlayerScore: (!isItFirstPlayerTurn ?
-                                    firstPlayerScore + dices[0] + dices[1] : secondPlayerScore),
+                                secondPlayerScore + dices[0] + dices[1] : secondPlayerScore),
             dices: [1, 1],
             hasRolled: false,
         })
@@ -83,6 +82,7 @@ class Board extends Component {
                                 (firstPlayerScore > secondPlayerScore ? 'won' : 'loss') :
                                 'in-game'
                     }
+                    player="PLAYER 1"
                 />
 
                 <br />
@@ -107,6 +107,7 @@ class Board extends Component {
                         (secondPlayerScore > firstPlayerScore ? 'won' : 'loss') :
                         'in-game'
                     }
+                    player="PLAYER 2"
                 />
             </div>
         )

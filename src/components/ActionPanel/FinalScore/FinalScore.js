@@ -12,8 +12,10 @@ const FinalScore = ({ value, action }) => {
         <input 
             type="number" 
             name="finalScore" 
-            value={localValue} 
+            value={localValue === 100 ? "" : localValue}
+            placeholder="FINAL SCORE" 
             onChange={(event) => onInputChange(event)}
+            className="final-score"
         />
     )
 }

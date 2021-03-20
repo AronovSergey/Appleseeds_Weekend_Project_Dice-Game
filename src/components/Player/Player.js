@@ -4,13 +4,20 @@ import TotalScore from './TotalScore/TotalScore';
 
 import './Player.css'
 
-const Player = ({ score, dices, myTurn, hasRolled, hasWon }) => {
+const Player = ({ score, dices, myTurn, hasRolled, hasWon, player }) => {
     if(hasWon === 'in-game'){
         return (
             <div className={`player ${myTurn ? 'my-turn' : ''}`}>
-                <TotalScore 
-                    score={score}
-                />
+                <div
+                    style={{textAlign: "center"}}
+                >
+                    <span className="title">
+                        {player}
+                    </span>
+                    <TotalScore 
+                        score={score}
+                    />
+                </div>
                 <CurrentScore 
                     dices={dices}
                     myTurn={myTurn}

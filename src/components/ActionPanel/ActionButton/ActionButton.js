@@ -4,8 +4,13 @@ const ActionButton = ({ children, value, action }) => {
     return (
         <button
             onClick={action}
+            className="btn"
         >
-            {children}
+            <div
+                className="btn-icon"
+            >
+                {children}
+            </div>
             {value}
         </button>
     )

@@ -1,7 +1,32 @@
 .player {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .my-turn {
-    background: #eee;
+    background: #f1f2f6;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.total {
+    font-size: 10rem;
+    font-weight: 100;
+    color: #ff4757;
+}
+
+.current {
+    text-align: center;
+    font-size: 2rem;
+    background: #ff4757;
+    color: white;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 8px;
 }
