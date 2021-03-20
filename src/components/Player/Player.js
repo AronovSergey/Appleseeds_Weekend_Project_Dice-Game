@@ -29,10 +29,7 @@ const Player = ({ score, dices, myTurn, hasRolled, hasWon, player }) => {
     else if(hasWon === 'won'){
         return(
             <div 
-                className="player"
-                style={{
-                    fontSize: "50px" 
-                }}
+                className="player win-loss"
             >
                 {'LOSS :('}
             </div>
@@ -41,10 +38,7 @@ const Player = ({ score, dices, myTurn, hasRolled, hasWon, player }) => {
     else {
         return(
             <div 
-                className="player"
-                style={{
-                    fontSize: "50px" 
-                }}
+                className="player win-loss"
             >
                 {'WIN :)'}
             </div>

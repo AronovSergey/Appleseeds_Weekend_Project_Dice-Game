@@ -6,6 +6,10 @@
     justify-content: space-around;
 }
 
+.win-loss {
+    font-size: 3.5rem; 
+}
+
 .my-turn {
     background: #f1f2f6;
 }
@@ -29,4 +33,28 @@
     font-weight: 500;
     padding: 15px;
     border-radius: 8px;
+} 
+
+@media only screen and (max-width: 480px) {
+    .player {
+        justify-content: space-between;
+        padding: 10vh 0;
+    }
+    
+    .win-loss {
+        font-size: 1.6rem; 
+    }
+    .title {
+        text-align: center;
+        font-size: 1.6rem;
+    }
+    
+    .total {
+        font-size: 3rem;
+        font-weight: 300;
+    }
+    
+    .current {
+        font-size: 1rem;
+    } 
 }
